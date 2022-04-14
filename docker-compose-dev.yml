@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  symfony:
+    container_name: bigbuy_back
+    environment:
+      - TZ=Europe/Madrid
+      - DEBIAN_FRONTEND=noninteractive
+    build:
+      context: ./apache
+    ports:
+      - 80:80
+    volumes:
+      - ./web:/var/www/html
+      - ./cron.d:/etc/cron.d
+      - ./composer.www-data:/var/www/.composer
